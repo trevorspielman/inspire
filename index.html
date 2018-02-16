@@ -3,16 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Inspire</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	 crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body id="body">
+<body class="background" id="bgImage">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-4">
+				<div id="quote">
+					<!-- <p><em>quote</em></p>
+					<p><strong>author</strong></p> -->
+				</div>
+			</div>
+		</div>
+	</div>
 	<div id="weather">
 		Your Weather Template
-	</div>
-
-	<div id="quote">
-		The Quote
 	</div>
 
 	<div id="todo">
@@ -24,7 +32,8 @@
 
 
 	<!--JS Libraries-->
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
 	<!--Services-->
 	<script src="app/components/weather/weather-service.js"></script>
 	<script src="app/components/image/image-service.js"></script>
