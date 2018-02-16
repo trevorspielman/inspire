@@ -7,7 +7,6 @@ function ImageController() {
 	}
 	
 	function drawImage(imageRes){
-		console.log(imageRes)
 		imageElem.style.backgroundImage = `url(${imageRes.url})`
 		imageElem.style.backgroundRepeat = 'no-repeat'
 		imageElem.style.backgroundSize = 'cover'
