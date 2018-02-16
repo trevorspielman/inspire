@@ -13,15 +13,11 @@ function WeatherController() {
 			<p>High: ${temp.temp_max}</p>
 			<p>Low: ${temp.temp_min}</p>
 			</div>
-			`
-		weather.weather.forEach(weather => {
-			weatherTemplate += `
 			<div class="col-2">
-			<img src="http://openweathermap.org/img/w/${weather.icon}.png" alt="${weather.description}">
-			<p>${weather.description}</p>
+			<img src="http://openweathermap.org/img/w/${weather.weather[0].icon}.png" alt="${weather.description}">
+			<p>${weather.weather[0].description}</p>
 			</div>
 			`
-		})
 
 		weatherElem.innerHTML = weatherTemplate
 	})

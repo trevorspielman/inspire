@@ -1,1 +1,1 @@
-.backgrond{background-repeat:no-repeat;background-attachment:fixed;background-size:cover;color:white}.quote{color:white}.weather{background:white}
+.backgrond{background-repeat:no-repeat;background-attachment:fixed;background-size:cover;color:white}.quote{color:white}.weather{background:white}.todo{background:lightblue}.remove{color:red}.action{transition:all .2s linear;opacity:.7;cursor:pointer}.action:hover{opacity:1}
