@@ -15,13 +15,13 @@ function TodoController() {
 	}
 
 	function drawTasks(taskList) {
-		var taskTemplate = ''
+		var taskTemplate = `<h4>Tasks Remaining: ${taskList.length} </h4>`
 		taskList.forEach(task =>{
 			taskTemplate += `
 			<div class="form-check">
-			  <input class="form-check-input" type="checkbox" value="" id="task">
-			  <label class="form-check-label" for="task">${task.task}</label>
-			  <i onclick="app.controllers.todoController.removeTask('${task.id}')" class="action remove fa fa-fw fa-sm fa-trash text-red"></i>
+			<input class="form-check-input" type="checkbox" value="" id="task">
+			<label class="form-check-label" for="task">${task.task}</label>
+			<i onclick="app.controllers.todoController.removeTask('${task.id}')" class="action remove fa fa-fw fa-sm fa-trash text-red"></i>
 			</div>
 			`
 		})

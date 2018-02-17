@@ -1,20 +1,42 @@
-.backgrond {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  color: white;
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
 }
 
 .quote {
-  color: white;
+  display: flex;
 }
 
 .weather {
-  background: white;
+  display: flex;
+  justify-content: space-around;
+}
+
+.clock {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .todo {
-  background: lightblue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo .taskList {
+  text-align: right;
+}
+
+.sectionBackground {
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 20px 10px black;
 }
 
 .remove {

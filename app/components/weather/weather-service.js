@@ -7,10 +7,19 @@ function WeatherService() {
 		$.get(apiUrl, function (res) {
 			res = JSON.parse(res)
 			localStorage.setItem('weather', JSON.stringify(res))
-			// HEY FUN FACT 
-			// Have you ever wanted to know the temperature measured in kelvin?
-			// You should probably convert the temperature data
-			callWhenDone(res);
+			console.log(res)
+			// if(output == 'fare'){
+			// 	weather.main[temp] = (weather.main[temp] * 1.8 - 459.67)
+			// }
+			// if(output == 'cel'){
+			// 	weather.main[temp] = (weather.main[temp] - 273.15)
+			// }
+			callWhenDone(res)
 		})
+	}
+
+	this.unitAdjustment = function unitAdjustment(output){
+		getWeather(output)
+		console.log(getWeather)
 	}
 }

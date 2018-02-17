@@ -5,11 +5,19 @@ function QuoteController(){
 
 	qs.getQuote(function(quote){
 		quoteTemplate = `
-		<p><em>${quote.quote}</em></p>
+		<div class="col-2"
 		<p><strong>${quote.author}</strong></p>
+		<i class="fas fa-random" onclick="app.controllers.quoteController.refreshQuote(event)"></i>
+		</div>
+		<div class="col-10">
+		<p><em>${quote.quote}</em></p>
+		</div>
 		`
-		// <i class="fas fa-sync" onclick="app.controllers.quoteController.getQuote('quote')">
-
 		quoteElem.innerHTML = quoteTemplate
 	})
+	
+	this.refreshQuote = function refreshQuote(event){
+		event.preventDefault()
+		qs.getQuote(function(quote){})
+	}
 }

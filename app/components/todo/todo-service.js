@@ -29,7 +29,7 @@ function TodoService() {
 			}) 
 	}
 
-	this.toggleTaskStatus = function toggleTaskStatus (todoId) {
+	this.toggleTaskStatus = function toggleTaskStatus (taskId, callBack) {
 		// MAKE SURE WE THINK THIS ONE THROUGH
 		//STEP 1: Find the todo by its index **HINT** todoList
 
@@ -39,11 +39,12 @@ function TodoService() {
 		$.ajax({
 			method: 'PUT',
 			contentType: 'application/json',
-			url: baseUrl + '/' + todoId,
-			data: JSON.stringify(YOURTODOVARIABLEHERE)
+			url: baseUrl + '/' + taskId,
+			data: JSON.stringify(todoList),
+			//task.completed = !task.completed
 		})
 			.then(function (res) {
-				//DO YOU WANT TO DO ANYTHING WITH THIS?
+				this.getTasks(callBack)
 			})
 			.fail(logError)
 	}
