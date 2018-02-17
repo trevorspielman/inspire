@@ -4,10 +4,9 @@ function WeatherService() {
 	var apiUrl = url + encodeURIComponent(url2);
 
 	this.getWeather = function (callWhenDone, output) {
-		$.get(apiUrl, function (res, output) {
+		$.get(apiUrl, function (res) {
 			res = JSON.parse(res)
 			localStorage.setItem('weather', JSON.stringify(res))
-			console.log(res)
 			// if(output == 'fare'){
 			// 	weather.main[temp] = (weather.main[temp] * 1.8 - 459.67)
 			// }
@@ -18,8 +17,4 @@ function WeatherService() {
 		})
 	}
 
-	this.unitAdjustment = function unitAdjustment(output){
-		getWeather(output)
-		console.log(getWeather)
-	}
 }
