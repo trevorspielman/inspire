@@ -18,10 +18,18 @@
   justify-content: space-around;
 }
 
+.weather p {
+  margin: 0rem;
+}
+
 .clock {
   display: flex;
   justify-content: center;
   text-align: center;
+}
+
+.clock p {
+  margin: 0rem;
 }
 
 .todo {
@@ -30,13 +38,26 @@
 }
 
 .todo .taskList {
-  text-align: right;
+  text-align: left;
+}
+
+.imageBtn {
+  max-height: 50px;
+  align-self: flex-end;
+  background: transparent;
+  color: white;
 }
 
 .sectionBackground {
   color: white;
   background: rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 20px 10px black;
+}
+
+.hidden {
+  height: 0;
+  opacity: 0;
+  cursor: default;
 }
 
 .remove {

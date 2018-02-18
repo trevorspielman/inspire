@@ -2,10 +2,11 @@ function QuoteController(){
 
 	var qs = new QuoteService()
 	var quoteElem = document.getElementById('quote')
+	var authorElem = document.getElementById('author')
 
 	qs.getQuote(function(quote){
 		quoteTemplate = `
-		<div class="col-2"
+		<div class="col-2" id="author">
 		<p><strong>${quote.author}</strong></p>
 		<i class="fas fa-random" onclick="app.controllers.quoteController.refreshQuote(event)"></i>
 		</div>
@@ -20,4 +21,5 @@ function QuoteController(){
 		event.preventDefault()
 		qs.getQuote(function(quote){})
 	}
+	
 }

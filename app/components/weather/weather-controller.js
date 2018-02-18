@@ -16,8 +16,8 @@ function WeatherController() {
 			<p>High: ${temp.temp_max}</p>
 			</div>
 			<div class="col-6">
-			<img class="m-1" src="http://openweathermap.org/img/w/${weather.weather[0].icon}.png" alt="${weather.description}">
-			<p class="m-1">${weather.weather[0].description}</p>
+			<img src="http://openweathermap.org/img/w/${weather.weather[0].icon}.png" alt="${weather.description}">
+			<p>${weather.weather[0].description}</p>
 			<i onclick="app.controllers.weatherController.unitAdjustment('fare')" >&#8457</i>
 			<i onclick="app.controllers.weatherController.unitAdjustment('cel')">&#8451</i>
 		</div>
