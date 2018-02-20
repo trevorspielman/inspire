@@ -35,5 +35,5 @@ function ClockController() {
          drawClock(format)
     }
 
-    drawClock('twelve')
+    drawClock('twenty-four')
 }
