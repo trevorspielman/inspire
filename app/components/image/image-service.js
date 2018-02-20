@@ -7,7 +7,7 @@ function ImageService() {
 	this.getImage = function getImage(callWhenDone) {
 		$.get(apiUrl)
 			.then(imageRes => {
-				// imageRes = JSON.parse(imageRes)
+				imageRes = JSON.parse(imageRes)
 				//console.log('Image Data:', imageRes)
 				callWhenDone(imageRes)
 			})
