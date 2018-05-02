@@ -8,7 +8,6 @@ function ImageService() {
 		$.get(apiUrl)
 			.then(imageRes => {
 				imageRes = JSON.parse(imageRes)
-				//console.log('Image Data:', imageRes)
 				callWhenDone(imageRes)
 			})
 	}

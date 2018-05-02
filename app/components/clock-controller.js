@@ -1,39 +1,61 @@
 function ClockController() {
     var clockElem = document.getElementById('clock')
-    
-    
-    function drawClock(format) {
+
+
+    function standardClock() {
         var now = new Date()
-        var hour = now.getHours()
-        var minute = now.getMinutes()
-        var period = ''
-        var timeOfDay = (now.getHours() < 12 ) ? "AM" : "PM"
-        minute < 10 ? minute = '0'+minute : true
-        format == 'twelve' && hour > 12 ? hour = hour - 12 : true
-        format == 'twenty-four' && hour < 10 ? hour = '0' + hour : true
-        now.getHours() < 12 ? period = 'Morning' : true
-        now.getHours() >= 12 ? period = 'Afternoon' : true
-        now.getHours() >= 17 ? period = 'Evening' : true
-        var clockTemplate = `
-        <div class="row">
-        <div class="col-6">
-        <p onclick="app.controllers.clockController.clockUnit('twelve')" >12 Hour </p>
-        </div>
-        <div class="col-6">
-        <p onclick="app.controllers.clockController.clockUnit('twenty-four')">24 Hour</p>
-        </div>
-        </div>
-        <h1>${hour}:${minute} ${timeOfDay}</h1>
-        <h3>Good ${period}</h3>
-        `
-        clockElem.innerHTML = clockTemplate
-        setTimeout(drawClock, 60000)
+        var hours = now.getHours() > 12 ? now.getHours() - 12 : now.getHours()
+        var amPm = now.getHours() >= 12 ? 'PM' : 'AM'
+        var minutes = now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes()
+        var time = hours + ':' + minutes + ':' + ' ' + amPm
+        var template = `
+        <h3 onclick="app.controllers.clockController.toggleClock()">24 Hour</h3>
+        <h1>${time}</h1>`
+        if (now.getHours() < 12) {
+            template += `<h3 class="">Good Morning</h3>`
+        } else if (now.getHours() >= 12 && now.getHours() < 18) {
+            template += `<h3 class="">Good Afternoon</h3>`
+        } else if (now.getHours() >= 18) {
+            template += `<h3 class="">Good Evening</h3>`
+        }
+        document.getElementById('standard-time').innerHTML = template
+
+        setTimeout(standardClock, 60000);
+    }
+
+    function militaryClock() {
+        var now = new Date()
+        var hours = now.getHours()
+        var minutes = now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes()
+        var time = hours + ':' + minutes
+        var template = `
+        <h3 onclick="app.controllers.clockController.toggleClock()">12 Hour</h3>
+        <h1>${time}</h1>`
+        if (hours < 12) {
+            template += `<h3 class="">Good Morning</h3>`
+        } else if (hours >= 12 && hours < 18) {
+            template += `<h3 class="">Good Afternoon</h3>`
+        } else if (hours >= 18) {
+            template += `<h3 class="">Good Evening</h3>`
+        }
+        document.getElementById('military-time').innerHTML = template
+
+        setTimeout(militaryClock, 60000);
     }
 
 
-    this.clockUnit = function clockUnit(format){
-         drawClock(format)
+    this.toggleClock = function toggleClock(){
+        var twelve = document.getElementById('standard-time')
+        var twentyfour = document.getElementById('military-time')
+        if (twelve.classList.contains('hidden')){
+            twelve.classList.remove('hidden')
+            twentyfour.classList.add('hidden')
+        } else {
+            twelve.classList.add('hidden')
+            twentyfour.classList.remove('hidden')
+        }
     }
 
-    drawClock('twenty-four')
+    standardClock()
+    militaryClock()
 }

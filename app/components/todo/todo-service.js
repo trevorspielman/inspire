@@ -2,14 +2,14 @@ function TodoService() {
 	var todoList = []
 	var baseUrl = 'https://inspire-server.herokuapp.com/api/tspielman'
 
+
 	function logError(err) {
 		console.error('UMM SOMETHING BROKE: ', err)
-		//CAN YOU NOTIFY THE USER IF SOMETHING BREAKS? 
-		//do this without breaking the controller/service responsibilities
 	}
 
-	function Task(form){
+	function Task(form) {
 		this.task = form.task.value
+		this.completed = false
 	}
 
 	this.getTasks = function (callBack) {
@@ -23,40 +23,39 @@ function TodoService() {
 	this.addTask = function addTask(form, cb) {
 		var task = new Task(form)
 		$.post(baseUrl, task)
-			.then(function(res){
+			.then(function (res) {
 				todoList.unshift(res.data)
 				cb(todoList)
-			}) 
+			})
 	}
 
-	this.toggleTaskStatus = function toggleTaskStatus (taskId, callBack) {
-		// MAKE SURE WE THINK THIS ONE THROUGH
-		//STEP 1: Find the todo by its index **HINT** todoList
+	this.toggleTaskStatus = function toggleTaskStatus(taskId, callBack) {
+		for (let i = 0; i < todoList.length; i++) {
+			const task = todoList[i];
+			if (task.id == taskId) {
+				task.completed = !task.completed
+				$.ajax({
+					method: 'PUT',
+					contentType: 'application/json',
+					url: baseUrl + '/' + taskId,
+					data: JSON.stringify(task),
+				})
+					.then(res => {
+						this.getTasks(callBack)
+					})
+					.fail(logError)
+			}
+		}
+	}
 
-		//STEP 2: Change the completed flag to the opposite of what is is **HINT** todo.completed = !todo.completed
-
-		//STEP 3: Here is that weird Ajax request because $.put doesn't exist
+	this.removeTask = function removeTask(taskId, callBack) {
 		$.ajax({
-			method: 'PUT',
-			contentType: 'application/json',
 			url: baseUrl + '/' + taskId,
-			data: JSON.stringify(todoList),
-			//task.completed = !task.completed
+			method: 'DELETE'
 		})
-			.then(function (res) {
+			.then(res => {
 				this.getTasks(callBack)
 			})
-			.fail(logError)
-	}
-
-	this.removeTask = function removeTask (taskId, callBack) {
-		$.ajax({
-            url: baseUrl + '/' + taskId,
-            method: 'DELETE'
-        })
-            .then(res => {
-                this.getTasks(callBack)
-            })
 	}
 
 }
