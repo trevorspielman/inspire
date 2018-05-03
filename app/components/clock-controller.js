@@ -7,7 +7,7 @@ function ClockController() {
         var hours = now.getHours() > 12 ? now.getHours() - 12 : now.getHours()
         var amPm = now.getHours() >= 12 ? 'PM' : 'AM'
         var minutes = now.getMinutes() < 10 ? '0' + now.getMinutes() : now.getMinutes()
-        var time = hours + ':' + minutes + ':' + ' ' + amPm
+        var time = hours + ':' + minutes + ' ' + amPm
         var template = `
         <h3 onclick="app.controllers.clockController.toggleClock()">24 Hour</h3>
         <h1>${time}</h1>`
